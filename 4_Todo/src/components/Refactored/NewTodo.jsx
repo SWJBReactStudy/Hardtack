@@ -11,7 +11,7 @@ const NewTodo = () =>{
 
     // 위에서 받은 Todo정보들을 저장할  useState 공간
     const [List, setList] = useState([{
-    //대괄호[] 주의, 대괄호를 쓰는 이유는 List는 객체로써 ID, TITLE, CONTENT를 담은 객체를 저장하기에, 배열같은 느낌인가? FUCK
+    //대괄호[] 주의, 대괄호를 쓰는 이유는 List는 객체로써 ID, TITLE, CONTENT를 담은 객체를 저장하기에, 여러개를? 배열같은 느낌인가? 
     }]);
 
     // HTML input이 들어오는 것을 감지하여, 바뀔 때 마다 함수 실행
@@ -19,7 +19,7 @@ const NewTodo = () =>{
         SaveInput({
             ...Input, //spread 문법으로  Input 객체의 ID, TITLE, CONTENT 복사
 
-            [event.target.name] : event.target.value
+            [event.target.name] : event.target.value // HTML input에 들어오는 값은 Input State의 키값과 같은 이름을 가진  HTML input 속성에 있는 name이름으로 저장
         });
     }
 
@@ -44,7 +44,7 @@ const NewTodo = () =>{
 
     
     //새로운 배열(newArray)에 map을 이용하여, List 배열을 복사
-    const newArray = List.map(copied => <div>{copied.TITLE} {copied.CONTENT}</div>); //newArray에 map을 이용하여 새로운 배열을 생성 (새 배열은 div로 이루어져 있음)
+    const newArray = List.map(copied => <div>{copied.TITLE} <br/>{copied.CONTENT}</div>); //newArray에 map을 이용하여 새로운 배열을 생성 (새 배열은 div로 이루어져 있음)
 
     return(
         <div>
@@ -53,7 +53,7 @@ const NewTodo = () =>{
             <input name="CONTENT" onChange={whileChange} value={Input.CONTENT} type="text"/>
             <button onClick={addTodo}>추가</button>
 
-            {newArray}
+            {newArray}{/* newArray 는 ID, TITLE, CONTENT가 담긴 객체를 여러개 담고 있는 배열이다(?)*/}
         </div>
     );
 }

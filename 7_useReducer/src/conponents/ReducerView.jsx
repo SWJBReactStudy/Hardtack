@@ -30,7 +30,7 @@ const initialState = {
 // END OF initialState
 
 
-const reducer = (state, action) =>{
+const reducer = (state, action) =>{ //state는 밑에 useReducer에(reducer) 로 부터 넘어온 state
     switch(action.type){
         case 'CHANGE_INPUT':
             return{

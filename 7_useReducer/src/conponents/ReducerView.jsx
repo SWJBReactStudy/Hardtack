@@ -50,7 +50,7 @@ const reducer = (state, action) =>{ //state는 밑에 useReducer에(reducer) 로
               ...state, //받아온 state를 spread로 복사해오기
               Todos:[ //spread로 복사된 state(파라미터로 받아온) 객체의 Todos 객체 배열은, 
                   ...state.Todos, //state안에 Todos 객체도 spread로 복사하여서 (원래 있던 투두 내용들)
-                  action.Todos //파라미터에서  action에 들어있던 Todos 객체임!
+                  action.bruh //파라미터에서  action에 들어있던 Todos 객체임!
               ]
 
             // Todos: state.Todos.map(copied => <div>{copied.title} {copied.content}</div>)
@@ -97,7 +97,7 @@ const ReducerView = () =>{
     const AddClicked = () =>{
         dispatch({ 
             type: 'CREATE_GAP', //애도 액션 (action.type)
-            Todos:{             //이 친구도 액션 (action.Todos)
+            bruh:{             //이 친구도 액션 (action.Todos)
                 id: NEXTID.current,
                 title,
                 content,
@@ -118,7 +118,7 @@ const ReducerView = () =>{
     }
     //END OF RemovedClicked function
 
-    
+        
 
     return(
         <div>

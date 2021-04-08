@@ -31,21 +31,25 @@ const initialState = {
 
 
 const reducer = (state, action) =>{ //state는 밑에 useReducer에(reducer) 로 부터 넘어온 state
+    console.log(state.title)
     switch(action.type){
         case 'CHANGE_INPUT':
             return{
                 ...state, //state spread 문법
-                inputs:{ //inintalState의 가장 상위 객체
+                inputs:{ //inintalState의 가장 상위 객체중 하나
                     ...state.inputs,
-                    [action.name]: action.value
+                    [action.name]: action.value //action 파라미터를 통해 들어온 이벤트 (아래서 비구조화 되서 들어옴) - event.target으로 들어왔음
                 }
             };
             // END OF return 1 (Input 값 바꾸기, setState같은 느낌..?)
 
             case 'CREATE_GAP':
             return{
-               inputs: initialState.inputs,
-               Todos:  [...state.Todos, action.inputs]
+              ...state,
+
+            Todos: state.Todos.map(copied => <div>{copied.title} {copied.content}</div>)
+
+               
             };
             // END OF return 2 (값, Todo 생성하기)
             
@@ -71,7 +75,7 @@ const ReducerView = () =>{
     const NEXTID = useRef(4); //NEXTID의 값을 4번부터 시작
     
     const { Todos } = state;
-    const { title, content } = state.inputs;
+    const { title, content } = state.inputs; //title 과 content는 state(사실 initialState 객체의) inputs 부분을 비구조화 해놓음.
 
     const whileChange = (event) =>{
         const {name, value} = event.target; //키값 비구조화

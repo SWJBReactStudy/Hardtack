@@ -31,13 +31,13 @@ const initialState = {
 
 
 const reducer = (state, action) =>{ //state는 밑에 useReducer에(reducer) 로 부터 넘어온 state
-    console.log(state.title)
+    console.log(state)
     switch(action.type){
         case 'CHANGE_INPUT':
             return{
                 ...state, //state spread 문법
                 inputs:{ //inintalState의 가장 상위 객체중 하나
-                    ...state.inputs,
+                    ...state.inputs, //그 안에서 state에 inputs객체를 다시 spread로 복사..? 한 느낌인듯
                     [action.name]: action.value //action 파라미터를 통해 들어온 이벤트 (아래서 비구조화 되서 들어옴) - event.target으로 들어왔음
                 }
             };
@@ -45,9 +45,16 @@ const reducer = (state, action) =>{ //state는 밑에 useReducer에(reducer) 로
 
             case 'CREATE_GAP':
             return{
-              ...state,
+              inputs: initialState.inputs, //inputs는 initalState객체의 inputs
 
-            Todos: state.Todos.map(copied => <div>{copied.title} {copied.content}</div>)
+              ...state, //받아온 state를 spread로 복사해오기
+              Todos:[ //spread로 복사된 state(파라미터로 받아온) 객체의 Todos 객체 배열은, 
+                  ...state.Todos,
+                  action.Todos //파라미터에서  action에 들어있던 Todos를 넣음
+
+              ]
+
+            // Todos: state.Todos.map(copied => <div>{copied.title} {copied.content}</div>)
 
                
             };
@@ -120,7 +127,7 @@ const ReducerView = () =>{
             <br/>
 
             <label>내용</label>
-            <input name="title" value={Todos.content} onChange={whileChange} onClick={AddClicked} type="text"/>
+            <input name="content" value={Todos.content} onChange={whileChange} onClick={AddClicked} type="text"/>
             <br/>
             <br/>
 

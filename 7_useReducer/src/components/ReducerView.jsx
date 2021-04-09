@@ -1,5 +1,5 @@
 import React, {useReducer, useRef} from 'react'
-import TodoBoxView from '../conponents/TodoBoxView'
+import TodoBoxView from './TodoBoxView'
 
 const initialState = {
     inputs:{                //이거 살짝 우리 Todo할떄 input관리해주는 부분
@@ -134,7 +134,7 @@ const ReducerView = () =>{
 
             <button onClick={AddClicked} >추가</button>
 
-            {Todos.map(copied => <TodoBoxView title={copied.title} content={copied.content}/>  )}
+            {Todos.map(copied => <TodoBoxView title={copied.title} content={copied.content} id={copied.id}/>  )}
 
             
         </div>

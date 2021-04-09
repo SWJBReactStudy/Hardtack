@@ -1,9 +1,9 @@
 import React from 'react'
-import ReducerView from './conponents/ReducerView.jsx'
-
+// import ReducerView from './components/ReducerView.jsx'
+import ReducerView2 from './Refactored/Reducer2.jsx'
 const App = () =>{
   return(
-    <ReducerView/>
+    <ReducerView2/>
   )
 }
 export default App;

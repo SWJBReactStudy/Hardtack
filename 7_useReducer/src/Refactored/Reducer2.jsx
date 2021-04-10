@@ -16,14 +16,19 @@ const reducer = (state, action) =>{
     switch(action.type){
         case 'MANAGE_INPUTS':
             return{
-
+                ...state,
             }
 
         case 'CHANGE_GAPS':
         return{
-
+            ...state,
         }
+        
+        default: //기본 일 경우,
+                return state;
     }
+
+
 }
 
 

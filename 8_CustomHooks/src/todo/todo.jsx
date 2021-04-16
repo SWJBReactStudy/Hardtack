@@ -39,10 +39,7 @@ const Todo = ()=>{
     const [{title, content}, whileChange, reset] = useInputs({
         title: '',
         content: ''
-    }
-    
-    
-    )
+    }) //보낸다 uesInputs로! - 얘내들 없으면 list, content등 다 오류남
 
     const Array = list.map(copied => <div> {copied.title} <br/> {copied.content} </div>)
 
